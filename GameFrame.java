@@ -35,7 +35,7 @@ public class GameFrame extends JFrame implements ActionListener {
             else { tilePieces[i].setText(""+(i+1)); }
         }
 
-        // shuffleTiles();
+        shuffleTiles();
 
         for(int i = 0; i < tilePieces.length; ++i) {
             tilePieces[i].setBounds(i%4 * TILE_SIZE, ((i*TILE_SIZE)/PANEL_LENGTH)*TILE_SIZE, TILE_SIZE, TILE_SIZE);
