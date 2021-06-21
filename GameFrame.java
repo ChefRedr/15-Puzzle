@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,11 +14,13 @@ public class GameFrame extends JFrame implements ActionListener {
     private final int PANEL_LENGTH = 600;
     private final int TILE_SIZE = PANEL_LENGTH/4;
     private JButton[] tilePieces = new JButton[16];
+    private ImageIcon gameLogo = new ImageIcon("logo.jpg");
     
     public GameFrame() {
         setTitle("15 Puzzle");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+        setIconImage(gameLogo.getImage());
 
         panel.setPreferredSize(new Dimension(PANEL_LENGTH, PANEL_LENGTH));
         panel.setLayout(null);
