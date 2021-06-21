@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +32,7 @@ public class GameFrame extends JFrame implements ActionListener {
             else { tilePieces[i].setText(""+(i+1)); }
         }
 
-        shuffleTiles();
+        // shuffleTiles();
 
         for(int i = 0; i < tilePieces.length; ++i) {
             tilePieces[i].setBounds(i%4 * TILE_SIZE, ((i*TILE_SIZE)/PANEL_LENGTH)*TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -83,6 +84,13 @@ public class GameFrame extends JFrame implements ActionListener {
         tilePieces[indexB] = temp;
     }
 
+    private boolean checkWin() {
+        for(int i = 0; i < tilePieces.length-1; ++i) {
+            if(!tilePieces[i].getText().equals(String.valueOf(i+1))) { return false; }
+        }
+        return true;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = 0;
@@ -93,6 +101,10 @@ public class GameFrame extends JFrame implements ActionListener {
         
         for(int i = 0; i < tilePieces.length; ++i) {
             tilePieces[i].setBounds(i%4 * TILE_SIZE, ((i*TILE_SIZE)/PANEL_LENGTH)*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
+
+        if(checkWin()) {
+            JOptionPane.showMessageDialog(null, "You Win!");
         }
     }
 
