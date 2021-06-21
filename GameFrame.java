@@ -31,7 +31,7 @@ public class GameFrame extends JFrame implements ActionListener {
             else { tilePieces[i].setText(""+(i+1)); }
         }
 
-        // shuffleTiles();
+        shuffleTiles();
 
         for(int i = 0; i < tilePieces.length; ++i) {
             tilePieces[i].setBounds(i%4 * TILE_SIZE, ((i*TILE_SIZE)/PANEL_LENGTH)*TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -51,7 +51,7 @@ public class GameFrame extends JFrame implements ActionListener {
         }
     }
 
-    public void moveTile(int tileIndex) {
+    private void moveTile(int tileIndex) {
         int surroundingIndex = 0;
         for(int i = 0; i < 4; ++i) {
             switch(i) {
@@ -90,11 +90,10 @@ public class GameFrame extends JFrame implements ActionListener {
             if(tilePieces[i] == e.getSource()) { index = i; break; }
         }
         moveTile(index);
-
-        System.out.print(tilePieces[0].getText() + ", " + tilePieces[1].getText() + ", " + tilePieces[2].getText() + ", " + tilePieces[3].getText() + "\n");
-        System.out.print(tilePieces[4].getText() + ", " + tilePieces[5].getText() + ", " + tilePieces[6].getText() + ", " + tilePieces[7].getText() + "\n");
-        System.out.print(tilePieces[8].getText() + ", " + tilePieces[9].getText() + ", " + tilePieces[10].getText() + ", " + tilePieces[11].getText() + "\n");
-        System.out.print(tilePieces[12].getText() + ", " + tilePieces[13].getText() + ", " + tilePieces[14].getText() + ", " + tilePieces[15].getText() + "\n\n");
+        
+        for(int i = 0; i < tilePieces.length; ++i) {
+            tilePieces[i].setBounds(i%4 * TILE_SIZE, ((i*TILE_SIZE)/PANEL_LENGTH)*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
     }
 
 }
