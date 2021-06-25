@@ -74,8 +74,19 @@ public class GameFrame extends JFrame implements ActionListener {
             }
             try {
                 if(!tilePieces[surroundingIndex].isEnabled()) {
-                    swap(tileIndex, surroundingIndex);
-                    break;
+                    if(surroundingIndex == tileIndex - 1) {
+                        if(!(tileIndex%4 == 0)) {
+                            swap(tileIndex, surroundingIndex);
+                        }
+                    }
+                    else if(surroundingIndex == tileIndex + 1) {
+                        if(!(tileIndex%4 == 3)) {
+                            swap(tileIndex, surroundingIndex);
+                        }
+                    }
+                    else {
+                        swap(tileIndex, surroundingIndex);
+                    }
                 }
             } catch(IndexOutOfBoundsException e) {}
         }
@@ -100,6 +111,7 @@ public class GameFrame extends JFrame implements ActionListener {
         for(int i = 0; i < tilePieces.length; ++i) {
             if(tilePieces[i] == e.getSource()) { index = i; break; }
         }
+
         moveTile(index);
         
         for(int i = 0; i < tilePieces.length; ++i) {
